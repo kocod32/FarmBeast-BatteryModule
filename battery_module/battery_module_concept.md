@@ -2,26 +2,11 @@
 
 Dokument opisuje osnovni koncept nadgradnje baterijskega sistema mobilnega kmetijskega robota FARMBEAST.
 
-Trenutni baterijski sistem uporablja LiFePO4 baterijski paket. Predlagana rešitev je modularen sistem iz več manjših Li-ion modulov, vezanih vzporedno na skupni DC vod. Vsak modul je samostojna 7S1P enota z lastnim BMS-om, varovalko in izhodno zaščito.
+Trenutni sistem uporablja LiFePO4 baterijski paket. Predlagana rešitev je modularen Li-ion sistem iz več manjših 7S1P modulov, vezanih vzporedno na skupni DC vod. Vsak modul ima svoj BMS, varovalko in hot-swap / precharge zaščito.
 
 ---
 
-## 1. Namen
-
-Namen koncepta je preveriti, ali bi lahko trenutni LiFePO4 baterijski paket nadomestili z modularnim Li-ion sistemom.
-
-Glavni cilji nadgradnje:
-
-- lažja menjava baterijskih modulov,
-- možnost uporabe različnega števila modulov,
-- boljša servisabilnost,
-- boljša diagnostika,
-- možnost hot-swap priklopa,
-- lažja prihodnja nadgradnja sistema.
-
----
-
-## 2. Trenutni baterijski paket
+## 1. Trenutni baterijski paket
 
 Trenutni baterijski paket ima približno naslednje podatke:
 
@@ -36,34 +21,19 @@ Trenutni baterijski paket ima približno naslednje podatke:
 | Izmerjena kapaciteta | približno 12.1–12.6 Ah |
 | Maksimalni tok | 60 A |
 
-
-
-Energija enega originalnega paketa:
+Energija enega paketa je približno:
 
 ```text
-E = U × Q
-E = 26.4 V × 12.8 Ah
-E = 337.92 Wh
+E = 26.4 V × 12.8 Ah = 337.92 Wh
 ```
 
-Glede na izmerjeno kapaciteto je realna energija enega paketa približno:
-
-```text
-26.4 V × 12.1 Ah = 319.44 Wh
-26.4 V × 12.6 Ah = 332.64 Wh
-```
-
-Za primerjavo lahko zato upoštevamo, da ima trenutni baterijski paket približno:
-
-```text
-320–338 Wh
-```
+Glede na izmerjeno kapaciteto je realna energija enega paketa približno **320–338 Wh**.
 
 ---
 
-## 3. Predlagan nov modul
+## 2. Predlagan nov modul
 
-Predlagan nov baterijski modul temelji na 20700 Li-ion celicah.
+Osnovni izračun je narejen za **20700 Li-ion celice** s kapaciteto približno 3.0 Ah. Kot alternativo je mogoče preveriti tudi **21700 celice**, vendar je treba pri tem ponovno preveriti dimenzije, kapaciteto, tokovno zmogljivost in energijo modula.
 
 | Parameter | Vrednost |
 |---|---:|
@@ -73,7 +43,7 @@ Predlagan nov baterijski modul temelji na 20700 Li-ion celicah.
 | Kapaciteta | 3.0 Ah |
 | Nazivna napetost | 25.2 V |
 | Maksimalna napetost | 29.4 V |
-| Minimalna napetost | približno 21.0 V |
+| Minimalna uporabna napetost | približno 21.0 V |
 | Energija | 75.6 Wh |
 
 Napetostni izračun:
@@ -87,17 +57,16 @@ U_min = 7 × 3.0 V = 21.0 V
 Energija enega modula:
 
 ```text
-E = 25.2 V × 3.0 Ah
-E = 75.6 Wh
+E = 25.2 V × 3.0 Ah = 75.6 Wh
 ```
 
-Konfiguracija 7S Li-ion je napetostno blizu trenutnemu sistemu. Pred izvedbo je treba vseeno preveriti, ali robot in njegova elektronika trajno preneseta maksimalno napetost 29.4 V.
+Konfiguracija 7S Li-ion je napetostno blizu trenutnemu sistemu. Pred izvedbo je treba preveriti, ali robot in njegova elektronika dovoljujeta celotno napetostno območje novega sistema, približno **21.0–29.4 V**.
 
 ---
 
-## 4. Predlagan modularni sistem
+## 3. Predlagan modularni sistem
 
-Predlagani sistem uporablja 6 ali 7 enakih 7S1P modulov v paralelni vezavi.
+Predlagani sistem uporablja **6 ali 7 enakih 7S1P modulov** v paralelni vezavi.
 
 Pri paralelni vezavi:
 
@@ -120,14 +89,25 @@ Primerjava s trenutnim paketom:
 | Nov sistem, 6 modulov | 453.6 Wh |
 | Nov sistem, 7 modulov | 529.2 Wh |
 
+Sistem s 6 ali 7 moduli ima več energije kot trenutni baterijski paket, zato je energijsko smiseln za zamenjavo trenutnega paketa.
 
 ---
 
-## 5. Tokovna analiza
+## 4. Tokovna analiza
 
-Trenutni baterijski paket omogoča maksimalni tok približno 60 A. Novi modularni sistem mora zato kot celota omogočati približno enak maksimalni tok.
+Trenutni baterijski paket omogoča maksimalni tok približno **60 A**. Novi modularni sistem mora zato kot celota omogočati približno enak maksimalni tok.
 
-Pri paralelni vezavi se skupni tok porazdeli med module. Ocenjeni tok na posamezen modul je:
+Tokovna zmogljivost enega novega modula ni določena samo s konfiguracijo 7S1P, ampak predvsem z izbranimi komponentami:
+
+- izbranimi celicami,
+- BMS-om,
+- varovalko,
+- nickel stripom,
+- vodniki,
+- konektorji,
+- hlajenjem in temperaturo modula.
+
+Pri paralelni vezavi se skupni tok približno porazdeli med module:
 
 ```text
 I_modul = I_skupni / število_modulov
@@ -135,70 +115,50 @@ I_modul = I_skupni / število_modulov
 
 Za skupni tok 60 A dobimo:
 
-| Število modulov | Tok na en modul |
+| Število modulov | Tok na en modul pri 60 A |
 |---:|---:|
 | 3 | 20.0 A |
 | 6 | 10.0 A |
 | 7 | 8.6 A |
 
-Iz tega sledi:
+To pomeni:
 
-- 1 ali 2 modula nista dovolj za polno obremenitev,
-- 3 moduli so spodnja meja, če en modul varno prenese približno 20 A,
-- 6 ali 7 modulov je primernejša konfiguracija, ker je tokovna obremenitev posameznega modula precej nižja.
+- če želimo delovanje s 6 ali 7 moduli, mora en modul varno oddajati približno 9–10 A,
+- če želimo možnost delovanja s samo 3 moduli pri polni obremenitvi, mora en modul varno oddajati približno 20 A,
+- 1 ali 2 modula nista predvidena za polno obremenitev 60 A.
 
-Zato mora biti en modul dimenzioniran vsaj za približno 20 A, priporočljivo pa z dodatno rezervo. Za BMS je zato smiselna izbira vsaj 20 A kontinuirno oziroma približno 30 A z rezervo.
+Za prototip je zato smiselno izbrati celice in BMS z rezervo. BMS 20–30 A je primerna začetna izbira, vendar je dejanska tokovna zmogljivost modula odvisna od konkretnih komponent in testiranja.
 
 ---
 
-## 6. BMS in zaščita modula
+## 5. BMS, zaščita in hot-swap
 
 Vsak modul mora imeti svoj BMS za 7S Li-ion baterijo.
 
-BMS mora omogočati:
+BMS mora omogočati osnovne zaščite:
 
-- zaščito pred prenapolnitvijo,
-- zaščito pred podpraznitvijo,
-- zaščito pred previsokim tokom,
-- zaščito pred kratkim stikom,
-- zaščito pred previsoko temperaturo,
+- prenapolnitev,
+- podpraznitev,
+- previsok tok,
+- kratek stik,
+- previsoka temperatura,
 - balansiranje celic.
 
-Priporočena tokovna zmogljivost BMS-a:
-
-```text
-minimalno: 20 A kontinuirno
-priporočljivo: 30 A kontinuirno
-```
-
-Za diagnostiko je smiselno uporabiti BMS s komunikacijo, na primer UART, CAN ali RS485.
-
----
-
-## 7. Hot-swap
-
-Hot-swap pomeni, da bi lahko modul priklopili ali odklopili med delovanjem sistema.
-
-Samo BMS za to ni dovolj. Pri vzporedni vezavi baterijskih modulov lahko nastanejo:
-
-- izenačevalni tokovi med moduli,
-- povratni tok v modul,
-- visok začetni tok,
-- obremenitev konektorjev.
-
-Zato mora imeti vsak modul dodatno izhodno zaščito.
+Ker so moduli vezani vzporedno, samo BMS ni dovolj za varen priklop. Vsak modul mora imeti še izhodno zaščito za hot-swap oziroma precharge.
 
 Osnovna struktura modula:
 
 ```text
-celice → BMS → varovalka → hot-swap / precharge stopnja → izhod modula
+celice → BMS → varovalka → hot-swap / precharge zaščita → izhod modula
 ```
+
+Hot-swap / precharge zaščita mora zmanjšati iskrenje, omejiti začetni tok in preprečiti nevaren povratni tok med moduli.
 
 ---
 
-## 8. Polnjenje
+## 6. Polnjenje
 
-Ker je novi sistem zasnovan kot 7S Li-ion, mora biti polnilec prilagojen tej kemiji.
+Ker je novi sistem 7S Li-ion, mora biti polnilec prilagojen Li-ion kemiji.
 
 Osnovne zahteve:
 
@@ -207,15 +167,13 @@ način polnjenja: CC/CV
 končna napetost: 29.4 V
 ```
 
-Možni načini polnjenja:
+LiFePO4 polnilec ni primeren, ker ima drugačen napetostni profil.
 
-- polnjenje posameznih modulov,
-- skupno polnjenje modulov na DC vodu,
-- servisna polnilna postaja.
+Za začetni razvoj je najbolj pregledna rešitev servisna polnilna postaja, kjer se lahko posamezni moduli polnijo in preverjajo ločeno.
 
 ---
 
-## 9. Osnovna blokovna zasnova
+## 7. Osnovna blokovna zasnova
 
 Vsak modul vsebuje:
 
@@ -233,7 +191,7 @@ Celoten sistem vsebuje:
 več modulov v paraleli
 skupni DC vod
 glavni kontaktor ali DC odklopnik
-tokovni senzor
+tokovni senzor ali shunt
 polnilni priključek
 diagnostični vmesnik
 ```
@@ -250,15 +208,15 @@ modul 7 ┘
 
 ---
 
-## 10. Kaj je treba še preveriti
+## 8. Kaj je treba še preveriti
 
 Pred izvedbo je treba preveriti:
 
-- ali robot dovoljuje maksimalno napetost 29.4 V,
-- katere 20700 celice so primerne,
+- ali robot dovoljuje celotno napetostno območje novega sistema, približno 21.0–29.4 V,
+- ali so za izvedbo primernejše 20700 ali 21700 celice,
 - kakšen tok lahko varno odda en modul,
 - kateri BMS je primeren,
-- kako rešiti hot-swap,
+- kako rešiti hot-swap / precharge zaščito,
 - kako dimenzionirati vodnike, konektorje in varovalke,
 - kako rešiti polnjenje,
 - kako mehansko vgraditi module,

@@ -1,22 +1,22 @@
 # FARMBEAST – Modularni baterijski sistem
 
-Repozitorij vsebuje osnovno dokumentacijo za koncept modularne nadgradnje baterijskega sistema mobilnega kmetijskega robota FARMBEAST.
+Repozitorij vsebuje osnovno dokumentacijo za koncept modularne nadgradnje baterijskega sistema robota FARMBEAST.
 
-Koncept obravnava zamenjavo trenutnega LiFePO4 baterijskega paketa z modularnim Li-ion sistemom. Predlagana zasnova temelji na več manjših 7S1P Li-ion modulih, vezanih vzporedno na skupni DC vod. Vsak modul ima svoj BMS, varovalko in hot-swap / precharge zaščito.
+Ideja je zamenjava trenutnega LiFePO4 baterijskega paketa z modularnim Li-ion sistemom. Sistem je sestavljen iz več 7S1P modulov, vezanih vzporedno na skupni DC vod. Vsak modul ima svoj BMS, varovalko in hot-swap / precharge zaščito.
 
-## Vsebina repozitorija
+## Vsebina
 
-- [Tehnični koncept](battery_module/battery_module_concept.md) – osnovni opis predlaganega modularnega baterijskega sistema.
-- [Blokovni diagram](battery_module/battery_module_flowchart.md) – Mermaid diagram arhitekture sistema in enega modula.
-- [Seznam komponent](battery_module/list_of_components.md) – osnovni seznam komponent za prototip.
-- [Testiranje](battery_module/testing/README.md) – kratek pregled testov, ki jih je smiselno izvesti.
-- [Trenutna baterija](battery_module/current_battery_module/) – podatki in meritve trenutnega baterijskega sistema.
+- [Tehnični koncept](battery_module/battery_module_concept.md)
+- [Blokovni diagram](battery_module/battery_module_flowchart.md)
+- [Seznam komponent](battery_module/list_of_components.md)
+- [Testiranje](battery_module/testing/README.md)
+- [Trenutna baterija](battery_module/current_battery_module/)
 
 ## Osnovna zasnova
 
-Predlagani sistem temelji na 6 ali 7 vzporedno vezanih 7S1P Li-ion modulih. Osnovni izračun je narejen za 20700 celice s kapaciteto približno 3.0 Ah. Kot alternativo je mogoče preveriti tudi 21700 celice.
+Osnovni izračun je narejen za 20700 Li-ion celice s kapaciteto približno 3.0 Ah. Kot alternativo je mogoče preveriti tudi 21700 celice.
 
-En modul ima približno:
+En 7S1P modul ima približno:
 
 - 25.2 V nazivno napetost,
 - 29.4 V maksimalno napetost,
@@ -24,4 +24,9 @@ En modul ima približno:
 - 3.0 Ah kapacitete,
 - 75.6 Wh energije.
 
-Pri 6 modulih sistem doseže približno 453.6 Wh, pri 7 modulih pa približno 529.2 Wh.
+Predlagana konfiguracija je 6 ali 7 modulov v paraleli:
+
+- 6 modulov: približno 453.6 Wh,
+- 7 modulov: približno 529.2 Wh.
+
+Ciljni maksimalni tok celotnega sistema je približno 60 A, enako kot pri trenutnem baterijskem paketu.
