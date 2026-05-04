@@ -2,18 +2,15 @@
 
 Repozitorij vsebuje osnovno dokumentacijo za koncept modularne nadgradnje baterijskega sistema mobilnega kmetijskega robota FARMBEAST.
 
-Koncept obravnava prehod iz trenutnega enotnega LiFePO4 baterijskega sklopa na sistem več manjših Li-ion modulov, vezanih vzporedno. Vsak modul je zasnovan kot samostojna 7S1P enota z lastnim BMS.
+Koncept obravnava zamenjavo trenutnega LiFePO4 baterijskega paketa z modularnim Li-ion sistemom. Predlagana zasnova temelji na več manjših 7S1P Li-ion modulih, vezanih vzporedno na skupni DC vod. Vsak modul ima svoj BMS, varovalko in izhodno zaščito.
 
-## Vsebina
+## Vsebina repozitorija
 
-V repozitoriju so zbrani:
-
-- osnovni opis predlagane arhitekture,
-- napetostni, energijski in tokovni izračuni,
-- zahteve za BMS,
-- osnovne zahteve za hot-swap,
-- predlog polnjenja,
-- blokovni diagram sistema.
+- `battery_module/battery_module_concept.md` – osnovni tehnični koncept modularnega baterijskega sistema.
+- `battery_module/battery_module_flowchart.md` – blokovni Mermaid diagram sistema.
+- `battery_module/list_of_components.md` – seznam potrebnih komponent za prototip.
+- `battery_module/testing/README.md` – testni načrt za celice, module in celoten sistem.
+- `battery_module/current_battery_module/` – podatki o trenutnem baterijskem sistemu.
 
 ## Osnovna zasnova
 
@@ -26,13 +23,7 @@ En modul ima približno:
 - 3.0 Ah kapacitete,
 - 75.6 Wh energije.
 
-Pri 6 modulih sistem doseže približno 453.6 Wh, pri 7 modulih pa približno 529.2 Wh
-
-## Datoteke
-
-- `FARMBEAST_battery_module_concept.md` – glavni tehnični koncept,
-- `FARMBEAST_battery_system_7_modules.md` – blokovni diagram sistema,
-- `README.md` – kratek opis repozitorija.
+Pri 6 modulih sistem doseže približno 453.6 Wh, pri 7 modulih pa približno 529.2 Wh.
 
 ## Status
 
