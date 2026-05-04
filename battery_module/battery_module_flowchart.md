@@ -114,7 +114,3 @@ flowchart LR
     class OUT output
     class DIAG control
 ```
-
-## Opomba
-
-Prvi diagram prikazuje celoten sistem z vsemi sedmimi moduli. Drugi diagram prikazuje notranjo zgradbo enega modula, da glavni sistemski diagram ne postane nepregleden.

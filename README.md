@@ -26,7 +26,7 @@ En modul ima približno:
 - 3.0 Ah kapacitete,
 - 75.6 Wh energije.
 
-Pri 6 modulih sistem doseže približno 453.6 Wh, pri 7 modulih pa približno 529.2 Wh.
+Pri 6 modulih sistem doseže približno 453.6 Wh, pri 7 modulih pa približno 529.2 Wh
 
 ## Datoteke
 
