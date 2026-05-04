@@ -2,11 +2,6 @@
 
 Ta dokument vsebuje osnovni seznam komponent za prototip modularnega baterijskega sistema FARMBEAST.
 
-Seznam je razdeljen na tri dele:
-
-- komponente za en 7S1P modul,
-- komponente za sistem s 6–7 moduli,
-- merilna oprema za testiranje.
 
 ## 1. En modul 7S1P
 
@@ -35,18 +30,3 @@ Opomba: temperaturni senzor in balansirni kabel nista posebej navedena, ker sta 
 | Diagnostični krmilnik | Arduino ali ESP32 za branje BMS podatkov; za prototip dovolj | 1 kos | priporočljivo |
 
 Napetostni senzor ni posebej ločen, ker se meritev napetosti lahko vključi v diagnostični del sistema.
-
-## 3. Merilna oprema
-
-| Oprema | Namen | Količina | Status |
-|---|---|---:|---|
-| Laboratorijski napajalnik | osnovno testiranje pred montažo na robota | 1 kos | obvezno |
-| Elektronsko breme | praznjenje in obremenitveni testi modula | 1 kos | obvezno |
-| Multimeter | meritev napetosti in preverjanje povezav | 1 kos | obvezno |
-| Tokovne klešče | meritev toka, vsaj 60 A območje | 1 kos | obvezno |
-| Točkovni varilnik | varjenje nickel stripa na celice | 1 kos | obvezno |
-| Termalna kamera ali termometer | preverjanje segrevanja celic, BMS-a, kablov in konektorjev | 1 kos | priporočljivo |
-
-## Kratek vrstni red nakupa
-
-Najprej je smiselno kupiti komponente za en testni modul. Ko en modul deluje pravilno, se sestavijo trije moduli za test tokovne delitve. Šele po tem je smiselno kupiti material za vseh 6 ali 7 modulov.

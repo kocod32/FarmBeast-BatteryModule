@@ -14,17 +14,14 @@ Koncept obravnava zamenjavo trenutnega LiFePO4 baterijskega paketa z modularnim 
 
 ## Osnovna zasnova
 
-Predlagani sistem temelji na 6 ali 7 vzporedno vezanih 7S1P Li-ion modulih iz 20700 ali 21700 celic.
+Predlagani sistem temelji na 6 ali 7 vzporedno vezanih 7S1P Li-ion modulih. Osnovni izračun je narejen za 20700 celice s kapaciteto približno 3.0 Ah. Kot alternativo je mogoče preveriti tudi 21700 celice.
 
 En modul ima približno:
 
 - 25.2 V nazivno napetost,
 - 29.4 V maksimalno napetost,
+- 21.0 V minimalno uporabno napetost,
 - 3.0 Ah kapacitete,
 - 75.6 Wh energije.
 
 Pri 6 modulih sistem doseže približno 453.6 Wh, pri 7 modulih pa približno 529.2 Wh.
-
-## Status
-
-Dokumentacija predstavlja začetni tehnični koncept. Pred izvedbo je treba izbrati konkretne komponente in izvesti dodatne električne, termične, mehanske in varnostne teste.

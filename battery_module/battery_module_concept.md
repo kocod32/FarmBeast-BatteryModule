@@ -36,7 +36,7 @@ Trenutni baterijski paket ima približno naslednje podatke:
 | Izmerjena kapaciteta | približno 12.1–12.6 Ah |
 | Maksimalni tok | 60 A |
 
-Minimalna napetost se med testiranima paketoma razlikuje. To je verjetno povezano z BMS cut-off mejo ali razlikami med celicami.
+
 
 Energija enega originalnega paketa:
 
@@ -120,7 +120,6 @@ Primerjava s trenutnim paketom:
 | Nov sistem, 6 modulov | 453.6 Wh |
 | Nov sistem, 7 modulov | 529.2 Wh |
 
-Sistem s 6 ali 7 moduli ima več energije kot trenutni baterijski paket, zato je energijsko smiseln za zamenjavo trenutnega paketa.
 
 ---
 
@@ -184,7 +183,6 @@ Samo BMS za to ni dovolj. Pri vzporedni vezavi baterijskih modulov lahko nastane
 
 - izenačevalni tokovi med moduli,
 - povratni tok v modul,
-- iskrenje pri priklopu,
 - visok začetni tok,
 - obremenitev konektorjev.
 
@@ -195,8 +193,6 @@ Osnovna struktura modula:
 ```text
 celice → BMS → varovalka → hot-swap / precharge stopnja → izhod modula
 ```
-
-Hot-swap oziroma precharge stopnja mora omejiti začetni tok, zmanjšati iskrenje in preprečiti nevarne tokove med moduli.
 
 ---
 
@@ -216,8 +212,6 @@ Možni načini polnjenja:
 - polnjenje posameznih modulov,
 - skupno polnjenje modulov na DC vodu,
 - servisna polnilna postaja.
-
-Za začetni razvoj je najbolj pregledna rešitev servisna polnilna postaja, ker omogoča ločeno preverjanje posameznega modula.
 
 ---
 
@@ -239,7 +233,7 @@ Celoten sistem vsebuje:
 več modulov v paraleli
 skupni DC vod
 glavni kontaktor ali DC odklopnik
-tokovni senzor ali shunt
+tokovni senzor
 polnilni priključek
 diagnostični vmesnik
 ```
@@ -269,37 +263,3 @@ Pred izvedbo je treba preveriti:
 - kako rešiti polnjenje,
 - kako mehansko vgraditi module,
 - kako spremljati napetost, tok, temperaturo in napake.
-
----
-
-## 11. Povzetek
-
-Trenutni sistem uporablja LiFePO4 baterijski paket z nazivno napetostjo 26.4 V, kapaciteto približno 12.8 Ah in maksimalnim tokom 60 A. Realna izmerjena kapaciteta je približno 12.1–12.6 Ah, kar pomeni približno 320–338 Wh energije na paket.
-
-Predlagani novi sistem uporablja več manjših 7S1P Li-ion modulov iz 20700 celic.
-
-En modul ima približno:
-
-```text
-25.2 V
-3.0 Ah
-75.6 Wh
-```
-
-Sistem s 6 moduli ima približno:
-
-```text
-18 Ah
-453.6 Wh
-```
-
-Sistem s 7 moduli ima približno:
-
-```text
-21 Ah
-529.2 Wh
-```
-
-Z energijskega vidika je 6- ali 7-modulna zasnova dovolj za nadomestitev trenutnega baterijskega paketa. Tokovno je pomembno, da sistem kot celota doseže približno 60 A. Pri 6 modulih to pomeni približno 10 A na modul, pri 7 modulih pa približno 8.6 A na modul.
-
-Glavni tehnični izzivi so izbira ustreznih celic, BMS, hot-swap zaščita, varno vzporedno povezovanje modulov, polnjenje in mehanska vgradnja.
