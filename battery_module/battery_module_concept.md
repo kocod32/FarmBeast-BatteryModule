@@ -89,8 +89,6 @@ Primerjava s trenutnim paketom:
 | Nov sistem, 6 modulov | 453.6 Wh |
 | Nov sistem, 7 modulov | 529.2 Wh |
 
-Sistem s 6 ali 7 moduli ima več energije kot trenutni baterijski paket, zato je energijsko smiseln za zamenjavo trenutnega paketa.
-
 ---
 
 ## 4. Tokovna analiza
