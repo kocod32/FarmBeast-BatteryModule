@@ -6,6 +6,7 @@ Ideja je zamenjava trenutnega LiFePO4 baterijskega paketa z modularnim Li-ion si
 
 ## Vsebina
 
+- [TODO](battery_module/TODO.md)
 - [Tehnični koncept](battery_module/battery_module_concept.md)
 - [Blokovni diagram](battery_module/battery_module_flowchart.md)
 - [Seznam komponent](battery_module/list_of_components.md)
