@@ -1,17 +1,16 @@
 # TODO
 
-V nadaljevanju je treba poleg električnega koncepta preveriti tudi mehansko izvedljivost sistema. Trenutno še niso znane točne mere obstoječega baterijskega paketa in razpoložljivega prostora v robotu, zato je naslednji korak mehanska preveritev.
+Naslednji korak pri projektu je preveriti, ali je predlagan baterijski modul sploh mogoče mehansko vgraditi v robota.
+
+Električni koncept je za zdaj narejen samo okvirno. Pred nadaljnjo izbiro komponent je treba najprej preveriti mere obstoječe baterije in prostor, ki je na voljo v robotu. To bom preveril na CAD modelu robota oziroma z merjenjem trenutnega baterijskega paketa.
 
 ## Naloge
 
-- [ ] Izmeriti obstoječi baterijski paket oziroma preveriti njegove mere v CAD modelu.
-- [ ] Preveriti razpoložljiv prostor za baterijo v CAD modelu robota.
-- [ ] Določiti maksimalne dovoljene mere enega novega modula.
-- [ ] Oceniti, koliko 7S1P modulov bi fizično lahko vgradili v robota.
-- [ ] Narediti osnovno postavitev celic, BMS-a, varovalke, konektorja in hot-swap / precharge zaščite.
-- [ ] Preveriti prostor za kable, konektorje, pritrditev in varno menjavo modula.
-- [ ] Po mehanski preveritvi posodobiti koncept in seznam komponent.
-
-## Opomba
-
-Električni koncept trenutno predpostavlja modularni sistem s 6 ali 7 moduli, vendar je treba to še mehansko potrditi. Končna konfiguracija bo odvisna od dejanskega prostora v robotu, dimenzij celic, BMS-a, zaščitnega vezja, konektorjev in ohišja modula.
+- [ ] Preveriti mere trenutnega baterijskega paketa.
+- [ ] Preveriti prostor za baterijo v CAD modelu robota.
+- [ ] Določiti največje možne mere enega novega modula.
+- [ ] Oceniti, koliko 7S1P modulov bi lahko fizično vgradili v robota.
+- [ ] Približno določiti postavitev celic v modulu.
+- [ ] Preveriti prostor za BMS, varovalko, konektorje in hot-swap / precharge zaščito.
+- [ ] Preveriti, koliko prostora zavzamejo kabli in zaščitni elementi.
+- [ ] Po preverjanju mer posodobiti tehnični koncept in seznam komponent.
